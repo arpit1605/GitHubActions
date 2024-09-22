@@ -1,21 +1,18 @@
-name: Test
+
+name: Deploy to EC2 machine
+
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
-  build:
+  build: #user defined
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check Out Code
-        uses: actions/checkout@v2
-      - name: Set Up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.12
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
-      - name: Run Tests
-        run: |
-          python hello.py
+      - name: Checkout the code base
+        uses: actions/checkout@v4
